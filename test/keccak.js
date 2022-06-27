@@ -162,7 +162,7 @@ describe("Keccak input: 4bytes, output: 32bytes, full hash test", function () {
 
 
 describe("Keccak input: 4096bits, output: 32bytes, full hash test", function () {
-    this.timeout(100000);
+    this.timeout(200000);
 
     let cir;
     before(async () => {
@@ -192,7 +192,7 @@ describe("Keccak input: 4096bits, output: 32bytes, full hash test", function () 
 
 
 describe("Keccak input: 8192bits (1kb), output: 32bytes, full hash test", function () {
-    this.timeout(100000);
+    this.timeout(400000);
 
     let cir;
     before(async () => {
