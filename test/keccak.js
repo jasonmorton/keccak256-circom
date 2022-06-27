@@ -191,31 +191,31 @@ describe("Keccak input: 4096bits, output: 32bytes, full hash test", function () 
 });
 
 
-describe("Keccak input: 8192bits (1kb), output: 32bytes, full hash test", function () {
-    this.timeout(800000);
+// describe("Keccak input: 8192bits (1kb), output: 32bytes, full hash test", function () {
+//     this.timeout(800000);
 
-    let cir;
-    before(async () => {
-	cir = await c_tester(path.join(__dirname, "circuits", "keccak_8192_256_test.circom"));
-	await cir.loadConstraints();
-	console.log("n_constraints", cir.constraints.length);
-    });
+//     let cir;
+//     before(async () => {
+// 	cir = await c_tester(path.join(__dirname, "circuits", "keccak_8192_256_test.circom"));
+// 	await cir.loadConstraints();
+// 	console.log("n_constraints", cir.constraints.length);
+//     });
 
-    it ("Keccak256 inputSize==8192, circom-js 1", async () => {
-	let input, inputBits, expectedOut, witness, stateOut, stateOutBytes;
-	input = Buffer.from("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit ve");
+//     it ("Keccak256 inputSize==8192, circom-js 1", async () => {
+// 	let input, inputBits, expectedOut, witness, stateOut, stateOutBytes;
+// 	input = Buffer.from("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit ve");
 	    
-	inputBits = utils.bytesToBits(input);
-	console.log("n_bits", inputBits.length);
+// 	inputBits = utils.bytesToBits(input);
+// 	console.log("n_bits", inputBits.length);
 
-	let jsOutRaw = keccak256(input);
-	expectedOut = utils.bufferToBytes(jsOutRaw);
-	console.log("in:", input.toString('hex'), "\n out:", jsOutRaw.toString('hex'));
+// 	let jsOutRaw = keccak256(input);
+// 	expectedOut = utils.bufferToBytes(jsOutRaw);
+// 	console.log("in:", input.toString('hex'), "\n out:", jsOutRaw.toString('hex'));
 
-	witness = await cir.calculateWitness({ "in": inputBits }, true);
-	stateOut = witness.slice(1, 1+(32*8));
-	stateOutBytes = utils.bitsToBytes(stateOut);
-	assert.deepEqual(stateOutBytes, expectedOut);
-    }
-       );
-});
+// 	witness = await cir.calculateWitness({ "in": inputBits }, true);
+// 	stateOut = witness.slice(1, 1+(32*8));
+// 	stateOutBytes = utils.bitsToBytes(stateOut);
+// 	assert.deepEqual(stateOutBytes, expectedOut);
+//     }
+//        );
+// });
