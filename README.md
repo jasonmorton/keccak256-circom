@@ -7,7 +7,7 @@ Keccak256 hash function (ethereum version) implemented in [circom](https://githu
 ## Status
 Initial version works, compatible with Ethereum version of Keccak256.  This version is modified from [arnaucube's](https://github.com/vocdoni/keccak256-circom/) to accept arbitrary input size (the original was limited to 1080 bits).
 
-It needs around `150848` (`151k`) constraints (more for sizes that require multiple 1088-bit blocks). 
+It needs around `150848` (`151k`) constraints (more for sizes that require multiple 1088-bit blocks, about 150k per block). 
 > For context: [Rapidsnark](https://github.com/iden3/rapidsnark) proof generation time:
 > - 1.1M constraints -> 7 seconds (8 CPU)
 > - 128M constraints -> <2min (64 CPU)
